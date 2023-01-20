@@ -1,26 +1,34 @@
 // import Image from "next/image";
 // import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import Nav from "@/components/Nav";
 import Product from "@/components/Product";
 
-// const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   const router = useRouter();
+  const categories = [
+    "Pertama",
+    "Kedua",
+    "Ketiga",
+    "Keempat",
+    "Kelma",
+    "Keenam",
+    "Ketujuh",
+    "Kedelapan",
+  ];
 
   return (
     <Layout title="Home">
       <Nav />
       <header className={styles.header}>
-        <div className={styles.container} style={{ "padding-bottom": "1rem" }}>
-          <div style={{ padding: "1rem 0.5rem" }}>
-            <h1 style={{ color: "black" }}>Zastya</h1>
-            <h1 style={{ color: "blueviolet" }}>Collections</h1>
-          </div>
+        <div className={styles.container} style={{ paddingBottom: "1rem" }}>
+          <h1 className="font-larger">
+            <span className="text-black">Zastya</span>
+            <br />
+            <span className="text-violet-600">Collections</span>
+          </h1>
 
           <form action="">
             <div className={styles.searchInput}>
@@ -37,14 +45,14 @@ export default function Home() {
           </form>
 
           <div className={styles.categories}>
-            <button className={styles.active}>Semua</button>
-            <button>Perabot</button>
-            <button>Pakaian</button>
-            <button>Makanan</button>
-            <button>Stiker</button>
-            <button>Pulsa</button>
-            <button>Tagihan</button>
-            <button>Lainnya</button>
+            {/* <button className={styles.active}>Semua</button> */}
+            {categories.map((item) => {
+              return (
+                <button className="bg-blue-700 outline- bg-opacity-10 rounded-md px-2 py-1 border-blue-700">
+                  {item}
+                </button>
+              );
+            })}
           </div>
         </div>
       </header>
@@ -53,6 +61,26 @@ export default function Home() {
         <section>
           <div className={styles.container}>
             <div className={styles.products}>
+              <Product
+                title={"Baju Jdsajdf"}
+                price={"100.000"}
+                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+              />
+              <Product
+                title={"Baju"}
+                price={"100.000"}
+                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+              />
+              <Product
+                title={"Baju"}
+                price={"100.000"}
+                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+              />
+              <Product
+                title={"Baju"}
+                price={"100.000"}
+                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+              />
               <Product
                 title={"Baju"}
                 price={"100.000"}
