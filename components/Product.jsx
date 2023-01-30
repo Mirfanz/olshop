@@ -2,7 +2,7 @@ import { Button, IconButton } from "@material-tailwind/react";
 
 const Product = ({ url, title, price }) => {
   return (
-    <div className=" flex flex-col bg-white p-2 rounded-md ">
+    <div className=" flex flex-col bg-white p-2 duration-100 rounded-md hover:bg-gray-50">
       <div className="w-100 overflow-hidden rounded-md">
         <img
           src={url}

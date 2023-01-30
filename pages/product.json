@@ -1,0 +1,39 @@
+{
+  "product": [
+    {
+      "id": "p_001",
+      "title": "Sebarang Judul",
+      "price": 10000
+    },
+    {
+      "id": "p_001",
+      "title": "Sebarang Judul",
+      "price": 10000
+    },
+    {
+      "id": "p_002",
+      "title": "Sebarang Judul",
+      "price": 10000
+    },
+    {
+      "id": "p_003",
+      "title": "Sebarang Judul",
+      "price": 10000
+    },
+    {
+      "id": "p_004",
+      "title": "Sebarang Judul",
+      "price": 10000
+    },
+    {
+      "id": "p_005",
+      "title": "Sebarang Judul",
+      "price": 10000
+    },
+    {
+      "id": "p_006",
+      "title": "Sebarang Judul",
+      "price": 10000
+    }
+  ]
+}

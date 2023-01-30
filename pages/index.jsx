@@ -6,7 +6,7 @@ import Layout from "@/components/Layout";
 import Nav from "@/components/Nav";
 import Product from "@/components/Product";
 
-export default function Home() {
+const Home = () => {
   const router = useRouter();
   const categories = [
     "Pertama",
@@ -48,7 +48,7 @@ export default function Home() {
             {/* <button className={styles.active}>Semua</button> */}
             {categories.map((item) => {
               return (
-                <button className="bg-blue-700 outline- bg-opacity-10 rounded-md px-2 py-1 border-blue-700">
+                <button className="bg-blue-700 outline-none bg-opacity-10 rounded-md px-2 py-1 border-blue-700">
                   {item}
                 </button>
               );
@@ -64,42 +64,26 @@ export default function Home() {
               <Product
                 title={"Baju Jdsajdf"}
                 price={"100.000"}
-                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+                url="backpack.jpg"
               />
-              <Product
-                title={"Baju"}
-                price={"100.000"}
-                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
-              />
-              <Product
-                title={"Baju"}
-                price={"100.000"}
-                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
-              />
-              <Product
-                title={"Baju"}
-                price={"100.000"}
-                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
-              />
-              <Product
-                title={"Baju"}
-                price={"100.000"}
-                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
-              />
+              <Product title={"Baju"} price={"100.000"} url="backpack.jpg" />
+              <Product title={"Baju"} price={"100.000"} url="backpack.jpg" />
+              <Product title={"Baju"} price={"100.000"} url="backpack.jpg" />
+              <Product title={"Baju"} price={"100.000"} url="backpack.jpg" />
               <Product
                 title={"Nama Produk Tampil Disini"}
                 price={"67.000"}
-                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+                url="backpack.jpg"
               />
               <Product
                 title={"Nama Produk Tampil Disini"}
                 price={"89.000"}
-                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+                url="backpack.jpg"
               />
               <Product
                 title={"Nama Produk Tampil Disini"}
                 price={"250.000"}
-                url={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+                url="backpack.jpg"
               />
             </div>
           </div>
@@ -107,4 +91,6 @@ export default function Home() {
       </main>
     </Layout>
   );
-}
+};
+
+export default Home;
