@@ -14,14 +14,12 @@ export default async function index(req, res) {
       }
       break;
     case "POST":
+      const data = JSON.parse(req.body);
       try {
-        const data = {
-          ...req.body,
-          product_id: Math.floor(Math.random() * 90000 + 10000),
-        };
         const response = await Product.create(data);
         res.status(200).json(response);
       } catch (error) {
+        console.log(error);
         res.status(400).end(`errorno: ${error.errno} -> ${error.sqlMessage}`);
       }
       break;

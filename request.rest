@@ -1,0 +1,23 @@
+### Get All Product
+GET  http://localhost:3000/api/products
+
+### Insert Products
+POST http://localhost:3000/api/products
+Content-Type: "application/json"
+
+{
+    "title": "Barang Ngawurrr",
+    "price": 18000,
+    "category": null,
+    "img_url": "/backpack.jpg"
+}
+
+### Get Product by `product_id`
+GET  http://localhost:3000/api/products/4648e334-3274-44a0-88bf-a2683c6bb9a7
+
+### Delete Product
+DELETE http://localhost:3000/api/products/77447
+
+### Update Product
+POST http://localhost:3000/api/products/32098
+
