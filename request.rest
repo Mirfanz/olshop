@@ -1,4 +1,3 @@
-POST http://localhost:3000/api/users
 
 ### Get All Product
 GET  http://localhost:3000/api/products
@@ -23,3 +22,14 @@ DELETE http://localhost:3000/api/products/77447
 ### Update Product
 POST http://localhost:3000/api/products/32098
 
+### Register
+POST http://localhost:3000/api/user/register
+
+### Login
+POST http://localhost:3000/api/user/login
+Content-Type: 'application/json'
+
+{
+    "username": "paullyss",
+    "password": "1234"
+}

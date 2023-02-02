@@ -6,13 +6,13 @@ import Nav from "@/components/Nav";
 import Product from "@/components/Product";
 import { useEffect, useState } from "react";
 
-const Home = async () => {
-  const [listProduct, setListProduct] = useState([]);
-  await fetch("http://localhost:3000/api/products")
-    .then((resp) => resp.json())
-    .then((resp) => {
-      setListProduct(resp);
-    });
+const Home = ({ products }) => {
+  // const getList = async () =>
+  //   await fetch("http://localhost:3000/api/products")
+  //     .then((resp) => resp.json())
+  //     .then((resp) => {
+  //       setListProduct(resp);
+  //     });
 
   const categories = [
     "Pertama",
@@ -67,12 +67,12 @@ const Home = async () => {
         <section>
           <div className={styles.container}>
             <div className={styles.products}>
-              <Product
+              {/* <Product
                 title={"Baju Jdsajdf"}
                 price={"100.000"}
                 url="backpack.jpg"
-              />
-              {listProduct.map((product, index) => {
+              /> */}
+              {products.map((product, index) => {
                 return (
                   <Product
                     title={product.title}
@@ -90,3 +90,13 @@ const Home = async () => {
 };
 
 export default Home;
+
+export const getStaticProps = async () => {
+  const response = await fetch("http://localhost:3000/api/products");
+  const products = await response.json();
+  return {
+    props: {
+      products,
+    },
+  };
+};
