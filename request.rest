@@ -1,3 +1,5 @@
+POST http://localhost:3000/api/users
+
 ### Get All Product
 GET  http://localhost:3000/api/products
 

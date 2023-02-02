@@ -1,13 +1,19 @@
 // import Image from "next/image";
 // import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
-import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import Nav from "@/components/Nav";
 import Product from "@/components/Product";
+import { useEffect, useState } from "react";
 
-const Home = () => {
-  const router = useRouter();
+const Home = async () => {
+  const [listProduct, setListProduct] = useState([]);
+  await fetch("http://localhost:3000/api/products")
+    .then((resp) => resp.json())
+    .then((resp) => {
+      setListProduct(resp);
+    });
+
   const categories = [
     "Pertama",
     "Kedua",
@@ -66,25 +72,15 @@ const Home = () => {
                 price={"100.000"}
                 url="backpack.jpg"
               />
-              <Product title={"Baju"} price={"100.000"} url="backpack.jpg" />
-              <Product title={"Baju"} price={"100.000"} url="backpack.jpg" />
-              <Product title={"Baju"} price={"100.000"} url="backpack.jpg" />
-              <Product title={"Baju"} price={"100.000"} url="backpack.jpg" />
-              <Product
-                title={"Nama Produk Tampil Disini"}
-                price={"67.000"}
-                url="backpack.jpg"
-              />
-              <Product
-                title={"Nama Produk Tampil Disini"}
-                price={"89.000"}
-                url="backpack.jpg"
-              />
-              <Product
-                title={"Nama Produk Tampil Disini"}
-                price={"250.000"}
-                url="backpack.jpg"
-              />
+              {listProduct.map((product, index) => {
+                return (
+                  <Product
+                    title={product.title}
+                    price={product.price}
+                    url={product.img_url}
+                  />
+                );
+              })}
             </div>
           </div>
         </section>
