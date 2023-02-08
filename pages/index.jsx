@@ -6,6 +6,17 @@ import Nav from "@/components/Nav";
 import Product from "@/components/Product";
 import { useEffect, useState } from "react";
 
+export async function getServerSideProps(context) {
+  const response = await fetch("http://localhost:3000/api/products");
+  let products = [];
+  if (response.ok) products = await response.json();
+  return {
+    props: {
+      products,
+    },
+  };
+}
+
 const Home = ({ products }) => {
   // const getList = async () =>
   //   await fetch("http://localhost:3000/api/products")
@@ -90,13 +101,3 @@ const Home = ({ products }) => {
 };
 
 export default Home;
-
-export const getStaticProps = async () => {
-  const response = await fetch("http://localhost:3000/api/products");
-  const products = await response.json();
-  return {
-    props: {
-      products,
-    },
-  };
-};
