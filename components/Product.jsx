@@ -8,13 +8,13 @@ const Product = ({ url, title, price }) => {
   }
   return (
     <div>
-      <div className="relative bg-gray-200 p-3 duration-100 rounded-2xl hover:bg-gray-300">
+      <div className="relative bg-gray-200 p-3 lg:p-2 duration-100 rounded-2xl hover:bg-gray-300">
         <img
           src={url}
           className=" aspect-square w-full rounded-xl mb-2 hover:scale-105 duration-100"
           alt={"Gambar " + title}
         />
-        <div className="bg-white px-3 py-2 rounded-xl text-center">
+        <div className="bg-white px-2 py-2 rounded-xl text-center">
           <h1 className="font-bold">{title}</h1>
           <h2 className="font-semibold opacity-75">Rp.{price}</h2>
           {/* <small className="opacity-75">12 Agustus 2023</small> */}
