@@ -68,6 +68,7 @@ const register = () => {
               <FormControl>
                 <FormLabel>Nama Lengkap</FormLabel>
                 <Input
+                  className="w-full"
                   variant="filled"
                   onChange={fieldHandler}
                   name="name"
@@ -81,6 +82,7 @@ const register = () => {
               <FormControl>
                 <FormLabel>Alamat Email</FormLabel>
                 <Input
+                  className="w-full"
                   variant="filled"
                   onChange={fieldHandler}
                   name="email"
@@ -92,6 +94,7 @@ const register = () => {
               <FormControl>
                 <FormLabel>Username</FormLabel>
                 <Input
+                  className="w-full"
                   variant="filled"
                   onChange={fieldHandler}
                   label="Username"
@@ -108,6 +111,7 @@ const register = () => {
               <FormControl>
                 <FormLabel>Password</FormLabel>
                 <Input
+                  className="w-full"
                   variant="filled"
                   onChange={fieldHandler}
                   name="password"
@@ -121,6 +125,7 @@ const register = () => {
               <FormControl>
                 <FormLabel>Repeat Password</FormLabel>
                 <Input
+                  className="w-full"
                   variant="filled"
                   onChange={fieldHandler}
                   name="password2"
