@@ -1,5 +1,4 @@
-// import Image from "next/image";
-// import { Inter } from "@next/font/google";
+import axios from "axios";
 import styles from "@/styles/Home.module.css";
 import Layout from "@/components/Layout";
 import Nav from "@/components/Nav";
@@ -18,29 +17,26 @@ export async function getServerSideProps(context) {
 }
 
 const Home = ({ products }) => {
-  // const getList = async () =>
-  //   await fetch("http://localhost:3000/api/products")
-  //     .then((resp) => resp.json())
-  //     .then((resp) => {
-  //       setListProduct(resp);
-  //     });
-
-  const categories = [
-    "Pertama",
-    "Kedua",
-    "Ketiga",
-    "Keempat",
-    "Kelma",
-    "Keenam",
-    "Ketujuh",
-    "Kedelapan",
-  ];
+  const [listProduct, setListProduct] = useState(products);
+  const [query, setQuery] = useState("");
+  async function searchHandler(e) {
+    e.preventDefault();
+    axios
+      .get(`/api/products/search?q=${query}`)
+      .then((resp) => {
+        setListProduct(resp.data.data);
+        console.log(listProduct);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }
 
   return (
     <Layout title="Home">
       <header className={styles.header}>
         <div className={styles.container}>
-          <form action="">
+          <form onSubmit={searchHandler}>
             <div className={styles.searchInput}>
               <button type="submit">
                 <i className="bx bx-fw bx-search-alt"></i>
@@ -49,6 +45,8 @@ const Home = ({ products }) => {
                 type="search"
                 pattern="[A-Za-z0-9 ,./-]*"
                 placeholder="Cari produk"
+                name="q"
+                onChange={(e) => setQuery(e.target.value)}
                 required
               />
             </div>
@@ -60,12 +58,7 @@ const Home = ({ products }) => {
         <section>
           <div className={styles.container}>
             <div className={styles.products}>
-              {/* <Product
-                title={"Baju Jdsajdf"}
-                price={"100.000"}
-                url="backpack.jpg"
-              /> */}
-              {products.map((product, index) => {
+              {listProduct.map((product, index) => {
                 return (
                   <Product
                     title={product.title}

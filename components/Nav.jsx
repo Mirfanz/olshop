@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import {
   Button,
+  IconButton,
   Input,
   Drawer,
   DrawerBody,
@@ -12,6 +13,11 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
+  MenuDivider,
 } from "@chakra-ui/react";
 
 const nav = () => {
@@ -79,9 +85,34 @@ const nav = () => {
             <i className="bx bx-fw bx-grid-alt"></i>
           </button>
           <h1 className=" mx-auto font-bold">F'Store</h1>
-          <button className=" text-xl">
-            <i className="bx bx-fw bx-cart"></i>
-          </button>
+          <Menu>
+            <MenuButton className=" text-xl">
+              <i className="bx bx-fw bx-cart"></i>
+            </MenuButton>
+            <MenuList>
+              <p className="px-3">Keranjang Belanja Kosyong!</p>
+              {/* <MenuItem>
+                <div className="flex w-full p-y1 px-2 gap-2 bg-slate-200 rounded-md">
+                  <img
+                    src="/img/pcx.jpeg"
+                    style={{ width: "5rem" }}
+                    className="ratio-square"
+                    alt=""
+                  />
+                  <div className="infos">
+                    <h1>Nama Produk</h1>
+                    <h2>Rp.19000</h2>
+                  </div>
+                </div>
+              </MenuItem> */}
+              {/* <MenuDivider />
+              <MenuItem>
+                <Link href={"/user/cart"} className="text-center">
+                  Lihat Semua
+                </Link>
+              </MenuItem> */}
+            </MenuList>
+          </Menu>
         </div>
       </nav>
 
@@ -94,21 +125,19 @@ const nav = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Menu</DrawerHeader>
+          <DrawerHeader>Menu Navigasi</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder="Cari sesuatu disini" />
-
-            <Link href="/">Beranda</Link>
+            <Input variant={"flushed"} placeholder="Temukan Produk" />
             <br />
-            <Link href="/user/cart">Keranjang</Link>
             <br />
-            <Link href="#">Disukai</Link>
-            <br />
-            <Link href="#">Akun Saya</Link>
-            <br />
-            <Link href="/product/add">Tambah Produk</Link>
-            <br />
+            <div className="flex flex-col gap-3">
+              <Link href="/">Beranda</Link>
+              <Link href="/user/cart">Keranjang</Link>
+              <Link href="#">Disukai</Link>
+              <Link href="#">Akun Saya</Link>
+              <Link href="/product/add">Tambah Produk</Link>
+            </div>
           </DrawerBody>
 
           <DrawerFooter>
