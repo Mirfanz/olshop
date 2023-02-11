@@ -38,15 +38,8 @@ const Home = ({ products }) => {
 
   return (
     <Layout title="Home">
-      <Nav />
       <header className={styles.header}>
-        <div className={styles.container} style={{ paddingBottom: "1rem" }}>
-          <h1 className="font-larger">
-            <span className="text-black">Zastya</span>
-            <br />
-            <span className="text-violet-600">Collections</span>
-          </h1>
-
+        <div className={styles.container}>
           <form action="">
             <div className={styles.searchInput}>
               <button type="submit">
@@ -60,17 +53,6 @@ const Home = ({ products }) => {
               />
             </div>
           </form>
-
-          <div className={styles.categories}>
-            {/* <button className={styles.active}>Semua</button> */}
-            {categories.map((item) => {
-              return (
-                <button className="bg-blue-700 outline-none bg-opacity-10 rounded-md px-2 py-1 border-blue-700">
-                  {item}
-                </button>
-              );
-            })}
-          </div>
         </div>
       </header>
 
