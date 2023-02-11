@@ -17,7 +17,7 @@ const post = () => {
     e.preventDefault();
     const form = new FormData(e.target);
     axios.post(
-      "/api/products/post",
+      "/api/products/add",
       {
         title: form.get("title"),
         price: form.get("price"),

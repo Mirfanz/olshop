@@ -11,16 +11,17 @@ export function middleware(request) {
   const { pathname } = request.nextUrl;
 
   // require not logged in
-  if (["/login", "/register"].includes(pathname)) {
+  if (["/auth/login", "/auth/register"].includes(pathname)) {
     if (token) return NextResponse.redirect(new URL("/", request.url));
   }
 
   //  require logged in
-  if (["/cart", "/products/post"].includes(pathname)) {
-    if (!token) return NextResponse.redirect(new URL("/login", request.url));
+  if (["/user/cart", "/product/add"].includes(pathname)) {
+    if (!token)
+      return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  if (pathname.startsWith("/products")) {
+  if (pathname.startsWith("/product")) {
     console.log("oke");
   }
   return response;

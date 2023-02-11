@@ -18,7 +18,7 @@ const login = () => {
       username: form.get("username"),
       password: form.get("password"),
     });
-    const responseLog = await fetch("/api/user/login", {
+    const responseLog = await fetch("/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const login = () => {
                   <Button type="submit">Login</Button>
 
                   <p>
-                    Belum punya akun? <Link href="/register">Daftar</Link>
+                    Belum punya akun? <Link href="/auth/register">Daftar</Link>
                   </p>
                 </div>
               </form>

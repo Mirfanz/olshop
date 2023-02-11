@@ -28,7 +28,7 @@ const register = () => {
       });
 
     // Do POST
-    const responseReg = await fetch("/api/user/register", {
+    const responseReg = await fetch("/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const register = () => {
     });
 
     // if success register
-    if (responseReg.status === 200) return router.push("/login");
+    if (responseReg.status === 200) return router.push("/auth/login");
 
     // if register failed
     const data = await responseReg.json();
@@ -103,7 +103,7 @@ const register = () => {
                   />
                   <Button type="submit">DAFTAR</Button>
                   <p>
-                    Sudah punya akun? <Link href="/login">Masuk</Link>
+                    Sudah punya akun? <Link href="/auth/login">Masuk</Link>
                   </p>
                 </div>
               </form>
