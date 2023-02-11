@@ -1,12 +1,26 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import {
+  Button,
+  Input,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 
 const nav = () => {
   const router = useRouter();
-  const [show, setShow] = useState(false);
   const path = router.pathname;
-  console.log(path);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = useRef();
+
   return (
     // <nav className="navbar">
     //   <div className="container">
@@ -53,31 +67,61 @@ const nav = () => {
     //     </ul>
     //   </div>
     // </nav>
-    <nav className="fixed left-0 right-0 bg-white top-0  py-2 px-3">
-      {/* <div className="container"> */}
-      <div className="flex align-middle py-2 text-lg">
-        <button
-          className=" text-xl"
-          onClick={() => {
-            setShow(!show);
-          }}
-        >
-          <i className="bx bx-fw bx-grid-alt"></i>
-        </button>
-        <h1 className=" mx-auto font-bold">F'Store</h1>
-        <div className={"nav-menu " + (show ? "show" : "hide")}>
-          <button onClick={() => setShow(!show)}>Close Sidebar</button>
-          <br />
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis
-          quaerat architecto ratione, maxime harum ea distinctio dolorem illum
-          quam dolor?
+    <>
+      <nav className="fixed left-0 right-0 bg-white top-0  py-2 px-3">
+        <div className="flex align-middle py-2 text-lg">
+          <button
+            ref={btnRef}
+            colorScheme="teal"
+            onClick={onOpen}
+            className=" text-xl"
+          >
+            <i className="bx bx-fw bx-grid-alt"></i>
+          </button>
+          <h1 className=" mx-auto font-bold">F'Store</h1>
+          <button className=" text-xl">
+            <i className="bx bx-fw bx-cart"></i>
+          </button>
         </div>
-        <button className=" text-xl">
-          <i className="bx bx-fw bx-cart"></i>
-        </button>
-        {/* </div> */}
-      </div>
-    </nav>
+      </nav>
+
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Menu</DrawerHeader>
+
+          <DrawerBody>
+            <Input placeholder="Cari sesuatu disini" />
+
+            <Link href="/">Beranda</Link>
+            <br />
+            <Link href="/user/cart">Keranjang</Link>
+            <br />
+            <Link href="#">Disukai</Link>
+            <br />
+            <Link href="#">Akun Saya</Link>
+            <br />
+            <Link href="/product/add">Tambah Produk</Link>
+            <br />
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant={"outline"} colorScheme="facebook" mr={3}>
+              Register
+            </Button>
+            <Button variant="solid" colorScheme={"facebook"}>
+              Login
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </>
   );
 };
 

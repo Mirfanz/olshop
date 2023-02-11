@@ -8,7 +8,7 @@ const Product = ({ url, title, price }) => {
   }
   return (
     <div>
-      <div className="relative bg-gray-200 p-3 lg:p-2 duration-100 rounded-2xl hover:bg-gray-300">
+      <div className="relative bg-gray-200 p-2 duration-100 rounded-2xl hover:bg-gray-300">
         <img
           src={url}
           className=" aspect-square w-full rounded-xl mb-2 hover:scale-105 duration-100"
