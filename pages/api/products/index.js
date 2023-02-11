@@ -14,7 +14,8 @@ export default async function index(req, res) {
       }
       break;
     case "POST":
-      const data = JSON.parse(req.body);
+      console.log(req.body);
+      const data = req.body;
       try {
         const response = await Product.create(data);
         res.status(200).json(response);
@@ -23,9 +24,8 @@ export default async function index(req, res) {
         res.status(400).end(`errorno: ${error.errno} -> ${error.sqlMessage}`);
       }
       break;
-
     default:
-      res.status(404).end("Method Tidak Diketahui");
+      res.status(404);
       break;
   }
 }

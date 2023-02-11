@@ -6,22 +6,6 @@ import React, { useState } from "react";
 import jwt from "jsonwebtoken";
 import Swal from "sweetalert2";
 
-export async function getServerSideProps(context) {
-  const allCookies = cookies(context);
-  console.log(context.req.headers);
-  if (
-    allCookies.token &&
-    jwt.verify(allCookies.token, process.env.JWT_SECRET_KEY)
-  ) {
-    const encodedJwt = jwt.decode(allCookies.token);
-    return context.res
-      .writeHead(302, { location: `/user/${encodedJwt.username}` })
-      .end();
-  }
-  return {
-    props: {},
-  };
-}
 const register = () => {
   const router = useRouter();
   const [fields, setFields] = useState({});
