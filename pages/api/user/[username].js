@@ -1,7 +1,7 @@
 import axios from "axios";
 import User from "@/models/UserModel";
 
-export default async function getuser(req, res) {
+export default async function handler(req, res) {
   const { username } = req.query;
 
   try {
@@ -13,7 +13,6 @@ export default async function getuser(req, res) {
     if (!response)
       return res.status(401).json({
         message: "Pengguna tidak ditemukan.",
-        data: {},
       });
     return res.status(200).json({
       data: response,

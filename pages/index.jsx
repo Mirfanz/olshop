@@ -6,7 +6,7 @@ import Product from "@/components/Product";
 import { useEffect, useState } from "react";
 
 export async function getServerSideProps(context) {
-  const response = await fetch("http://localhost:3000/api/products");
+  const response = await axios.get("http://localhost:3000/api/products");
   let products = [];
   if (response.ok) products = await response.json();
   return {
