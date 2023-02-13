@@ -1,15 +1,17 @@
 import axios from "axios";
+
 export async function getServerSideProps(context) {
   const { username } = context.query;
   let data = {};
   await axios
-    .get(`http://localhost:3000/api/user/${username}`)
+    .get(`${process.env.BASE_URL}/api/user/${username}`)
     .then((resp) => {
       data = resp.data.data;
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log(err);
+    });
 
-    
   return {
     props: {
       data,

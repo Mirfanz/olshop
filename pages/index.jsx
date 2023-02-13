@@ -4,11 +4,18 @@ import Layout from "@/components/Layout";
 import Nav from "@/components/Nav";
 import Product from "@/components/Product";
 import { useEffect, useState } from "react";
-
+5;
 export async function getServerSideProps(context) {
-  const response = await axios.get("http://localhost:3000/api/products");
   let products = [];
-  if (response.ok) products = await response.json();
+  await axios
+    .get(`${process.env.BASE_URL}/api/products`)
+    .then((resp) => {
+      products = resp.data ?? [];
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   return {
     props: {
       products,

@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     res.status(401).json({ message: "Mau ngapain hayooo!" });
 
   const { username, password } = req.body;
-  console.log(username, password);
+  console.log(req.body);
   try {
     const response = await User.findOne({
       where: {

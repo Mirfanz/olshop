@@ -1,10 +1,19 @@
 import { Input, Button } from "@chakra-ui/react";
 import axios from "axios";
+import cookies from "next-cookies";
 // import authInit, { get_user, require_login } from "@/middleware/auth";
 
 export async function getServerSideProps(context) {
+  const allCookies = cookies(context);
+  const token = allCookies.token;
+  if (!token)
+    return {
+      redirect: {
+        destination: "/auth/login",
+      },
+    };
   return {
-    props: {},
+    props: { token },
     // redirect: {
     //   destination: "/search",
     //   permanent: true,
@@ -12,24 +21,31 @@ export async function getServerSideProps(context) {
   };
 }
 
-const post = () => {
+const post = ({ token }) => {
   async function formHandler(e) {
     e.preventDefault();
     const form = new FormData(e.target);
-    axios.post(
-      "/api/products/add",
-      {
-        title: form.get("title"),
-        price: form.get("price"),
-        category: form.get("category"),
-        image: "/backpack.jpg",
-      },
-      {
-        headers: {
-          Authorization: "",
+    axios
+      .post(
+        "/api/products/add",
+        {
+          title: form.get("title"),
+          price: form.get("price"),
+          category: form.get("category"),
+          image: "/backpack.jpg",
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   return (
     <div className="container">

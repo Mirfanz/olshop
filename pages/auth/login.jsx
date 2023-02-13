@@ -14,6 +14,7 @@ import {
   InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react";
+import axios from "axios";
 
 const login = () => {
   // console.log(Cookies.get("token"));
@@ -22,29 +23,25 @@ const login = () => {
   async function submitLogin(e) {
     e.preventDefault();
     const form = new FormData(e.target);
-    const body = JSON.stringify({
+    const body = {
       username: form.get("username"),
       password: form.get("password"),
-    });
-    const responseLog = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body,
-    });
-    const data = await responseLog.json();
-    console.log(data);
-    // check is success
-    if (!responseLog.ok)
-      return Swal.fire({
-        icon: "error",
-        titleText: "Login Gagal!",
-        text: data.message,
+    };
+    axios
+      .post(`/api/auth/login`, body)
+      .then((resp) => {
+        Cookies.set("token", resp.data.token);
+        return router.back();
+      })
+      .catch((err) => {
+        console.log(err);
+        const text = err.response?.data.message;
+        return Swal.fire({
+          icon: "error",
+          titleText: "Login Gagal!",
+          text,
+        });
       });
-    // Set cookie token
-    Cookies.set("token", data.data.token);
-    return router.back();
   }
   return (
     <>
