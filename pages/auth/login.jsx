@@ -30,7 +30,7 @@ const login = () => {
     axios
       .post(`/api/auth/login`, body)
       .then((resp) => {
-        Cookies.set("token", resp.data.token);
+        Cookies.set("token", resp.data.data.token);
         return router.back();
       })
       .catch((err) => {

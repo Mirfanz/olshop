@@ -84,7 +84,9 @@ const nav = () => {
           >
             <i className="bx bx-fw bx-grid-alt"></i>
           </button>
-          <h1 className=" mx-auto font-bold">F'Store</h1>
+          <div className="mx-auto">
+            <img className="h-8" src="/logo.png" alt="" />
+          </div>
           <Menu>
             <MenuButton className=" text-xl">
               <i className="bx bx-fw bx-cart"></i>

@@ -16,7 +16,7 @@ export function middleware(request) {
   }
 
   //  require logged in
-  if (["/user/cart", "/product/add"].includes(pathname)) {
+  if (["/user/cart", "/product/adds"].includes(pathname)) {
     if (!token)
       return NextResponse.redirect(new URL("/auth/login", request.url));
   }
